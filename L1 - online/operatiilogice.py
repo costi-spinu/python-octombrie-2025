@@ -1,0 +1,17 @@
+totalCos=190
+baniInCont=200
+print (totalCos>baniInCont)
+print (totalCos<baniInCont)
+print (totalCos<=baniInCont)
+print (totalCos>=baniInCont)
+print (totalCos==baniInCont)
+print (totalCos!=baniInCont)
+print (not False)
+print (not 2>3)
+print (True and True)
+print (False and True)
+print (2>3 and 3<10)
+print (totalCos>100 and totalCos<190)
+print (True or True)
+print (True or False)
+print (False or False)
