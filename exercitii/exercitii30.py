@@ -208,21 +208,92 @@
 # operations. Use method overloading.
 
 
-class Vector:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+# class Vector:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
 
-    def __add__(self, other):
-        """Overload the + operator"""
-        return Vector(self.x + other.x, self.y + other.y)
+#     def __add__(self, other):
+#         """Overload the + operator"""
+#         return Vector(self.x + other.x, self.y + other.y)
 
-    def __str__(self):
-        """Overload how the object prints"""
-        return f"({self.x}, {self.y})"
+#     def __str__(self):
+#         """Overload how the object prints"""
+#         return f"({self.x}, {self.y})"
 
 
-v1 = Vector(1, 2)
-v2 = Vector(3, 4)
-v3 = v1 + v2  # Calls __add__
-print(v3)  # Calls __str__, outputs: (4, 6)
+# v1 = Vector(1, 2)
+# v2 = Vector(3, 4)
+# v3 = v1 + v2  # Calls __add__
+# print(v3)  # Calls __str__, outputs: (4, 6)
+
+
+class City:
+    def __init__(
+        self,
+        city_name="",
+        region_name="",
+        country_name="",
+        number_of_citizens=0,
+        zip_code="",
+        area_code="",
+    ):
+        self.city = city_name
+        self.region = region_name
+        self.country = country_name
+        self.number_of_citizens = number_of_citizens
+        self.zip = zip_code
+        self.code = area_code
+
+    # “Overloaded” method: can get data from user OR from given values
+    def input_data(
+        self,
+        city_name=None,
+        region_name=None,
+        country_name=None,
+        number_of_citizens=None,
+        zip_code=None,
+        area_code=None,
+    ):
+        if city_name is not None:  # if values are given, use them
+            self.city = city_name
+            self.region = region_name
+            self.country = country_name
+            self.number_of_citizens = number_of_citizens
+            self.zip = zip_code
+            self.code = area_code
+        else:  # otherwise ask the user to type info
+            self.city = input("City name: ")
+            self.region = input("Region name: ")
+            self.country = input("Country name: ")
+            self.number_of_citizens = input("Number of citizens: ")
+            self.zip = input("ZIP code: ")
+            self.code = input("Area code: ")
+
+    # “Overloaded” display: full or short info
+    def display(self, detailed=True):
+        if detailed:
+            print(f"City: {self.city}")
+            print(f"Region: {self.region}")
+            print(f"Country: {self.country}")
+            print(f"Number of citizens: {self.number_of_citizens}")
+            print(f"ZIP code: {self.zip}")
+            print(f"Area code: {self.code}")
+        else:
+            print(f"{self.city}, {self.country}")
+
+
+# Using constructor directly
+# c1 = City("Paris", "Île-de-France", "France", 2148000, "75000", "+33")
+# c1.display()        # shows all details
+# c1.display(False)   # shows short info
+
+# # Using input_data with arguments
+# c2 = City()
+# c2.input_data("London", "England", "UK", 8900000, "E1", "+44")
+# c2.display()
+
+# # Using input_data interactively (asks user for input)
+# c3 = City()
+# c3.input_data()
+# c3.display()
