@@ -45,3 +45,6 @@ Person.simpleMethodForClass()
 person1 = Person("Alex", "Popescu", 25)
 person1.simpleMethodForObject()
 person1.simpleMethodForStatic
+
+
+# person1-obiectul , Person - clasa

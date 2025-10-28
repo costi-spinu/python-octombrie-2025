@@ -1,12 +1,16 @@
 import random
+from datetime import date
 
 
 class Person:
+    hobby = "Cooking"
+    firstName = "primul din clasa"
+
     def __init__(self, firstName, lastName, age):
         # public properties
         self.firstName = firstName
         self.lastName = lastName
-        # protected properties
+        # protecte properties
         self._age = age
         # private properties
         self.__personID = random.randint(1, 100)
@@ -23,25 +27,35 @@ class Person:
     def sayHi(self, msgText):
         print(self.getInfo())
         return f"{msgText}! I am {self.firstName}."
-        # apelat cu class si nu cu obiectul "person1/self"
 
-    def simpleMethodForClass():
-        print("simple method() s-a executat!")
-        # apelat cu obiectul, si nu cu class
-        # instance method
-
-    def simpleMethodForObject(self):
-        print("simple method() s-a executat!")
-
-    # static method - se poate apela si cu ajutorul obiectul nu numai cu clasa.
-    # apelat cu clasa, dar si cu obiectul (nu ar trebui)
-    # Nu pot folosi self. ca parametru.
+    # static methods
     @staticmethod
-    def simpleMethodForStatic():
-        print("simple method() s-a executat!")
+    def sayGreetings():
+        print("Nice to meet you!")
+
+    @classmethod
+    def setDefaultHobby(cls):
+        cls.hobby = "Drawing"
+
+    @classmethod
+    def setDefaultFirstName(cls):
+        cls.firstName = "Prenume Default"
+
+    # overload
+    def methodTest(self, age=20):
+        print("Am apelat methodThest si afisez varsta: " + str(age))
 
 
-Person.simpleMethodForClass()
-person1 = Person("Alex", "Popescu", 25)
-person1.simpleMethodForObject()
-person1.simpleMethodForStatic
+person1 = Person("alex", "Popescu", 25)
+person1.methodTest()
+person1.methodTest(30)  # s-a facut overload
+
+# person2=Person("Bob", "Gordon",40)
+# print(person2.hobby)
+
+person3 = Person("Joe", "Black", 30)
+print(person3.firstName)
+Person.setDefaultFirstName()
+print(person3.firstName)
+print(Person.firstName)  # a apelat classmethod cu clasa
+print(person3.firstName)
